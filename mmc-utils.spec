@@ -1,5 +1,5 @@
-%define		snapdate	20220620
-%define		gitcommit	b7e4d5a6ae9942d26a11de9b05ae7d52c0802802
+%define		snapdate	20231010
+%define		gitcommit	b5ca140312d279ad2f22068fd72a6230eea13436
 
 Summary:	Tool for configuring MMC storage devices from userspace
 Name:		mmc-utils
@@ -8,7 +8,7 @@ Release:	0.%{snapdate}.1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git/snapshot/%{name}-%{gitcommit}.tar.gz
-# Source0-md5:	cf25e3725987c858ce33acb4e16ebf1d
+# Source0-md5:	8d15562e038f232b1e9f542cfcd3b0b3
 URL:		https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -23,6 +23,7 @@ Tool for configuring MMC storage devices from userspace.
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} %{rpmcppflags}" \
 	LDFLAGS="%{rpmldflags}" \
+	GIT_VERSION=%(echo %{gitcommit} | cut -c -6)
 
 %install
 rm -rf $RPM_BUILD_ROOT
